@@ -11,7 +11,7 @@ export const TextInput: React.FC<any> = () => {
   const handleChange = useCallback((newValue) => setValue(newValue.target.value), []);
 
   const addName = () => {
-    dispatch({ type: "add", name: value })
+    if (value) dispatch({ type: "add", name: value })
   }
   
   return (

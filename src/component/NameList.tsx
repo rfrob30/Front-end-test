@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
+import Collapse from '@material-ui/core/Collapse';
 
 export const NameList: React.FC<any> = () => {
   const { state } = useContext(Store);
@@ -16,7 +17,7 @@ export const NameList: React.FC<any> = () => {
   };
 
   return (
-    <div style={{minWidth: '290px'}}>
+    <div style={{minWidth: '283px'}}>
       <List component="nav" aria-label="secondary mailbox folder">
         {state.nameList.map((e,i) => 
           <ListItem
@@ -29,14 +30,17 @@ export const NameList: React.FC<any> = () => {
           </ListItem>
         )}
       </List>
-      <Grid container spacing={3}>
-        <Grid item>
-          <RandomNameButton />
+      <Collapse in={state.nameList.length > 0}>
+        <Grid container spacing={3}>
+          <Grid item>
+            <RandomNameButton />
+          </Grid>
+          <Grid item>
+            <RemoveNameButton selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
+          </Grid>
         </Grid>
-        <Grid item>
-          <RemoveNameButton selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
-        </Grid>
-      </Grid>
+      </Collapse>
+
       {state.currentName ? <p>Randomly Picked Name: <b>{state.currentName}</b></p> : null}
     </div>
   );
