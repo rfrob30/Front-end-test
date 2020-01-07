@@ -15,7 +15,7 @@ export const TextInput: React.FC<any> = () => {
   }
   
   return (
-    <Grid container justify="center" alignItems="flex-end" spacing={3}>
+    <Grid container justify="center" alignItems="flex-end" spacing={3} style={{ width: '100%'}}>
       <Grid item>
         <TextField id="standard-basic" label="Name" value={value} onChange={handleChange}/>
       </Grid>
